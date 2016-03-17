@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+
+		<!-- Auto DDL; validate, create, update, create-drop, none -->
+		<!-- validate: validate the schema, makes no changes to the database. -->
+		<!-- update: update the schema. -->
+		<!-- create: creates the schema, destroying previous data. -->
+		<!-- create-drop: drop the schema at the end of the session. -->
+		<!-- none: do nothing -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+
+		<!-- Connection Settings -->
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/zindekaldb</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">1234</property>
+
+		<!-- Dialect & Driver for MySQL -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+
+		<!-- Mapping -->
+		<mapping class="com.busra.bitirme.commons.entities.bilgiler.FaydaliBilgiler" />
+		<mapping class="com.busra.bitirme.commons.entities.bilgiler.SizeOzel" />
+		<mapping class="com.busra.bitirme.commons.entities.Satici" />
+		<mapping class="com.busra.bitirme.commons.entities.alerji.Alerji" />
+		<mapping class="com.busra.bitirme.commons.entities.hastalik.Hastalik" />
+		<mapping class="com.busra.bitirme.commons.entities.ilac.Ilac" />
+		<mapping class="com.busra.bitirme.commons.entities.urun.UrunIcerik" />
+		<mapping class="com.busra.bitirme.commons.entities.urun.UrunOzellik" />
+		<mapping class="com.busra.bitirme.commons.entities.urun.UrunVitamin" />
+		<mapping class="com.busra.bitirme.commons.entities.uye.GunlukIhtiyac"/>
+		<mapping class="com.busra.bitirme.commons.entities.uye.GunlukVitamin"/>
+		<mapping class="com.busra.bitirme.commons.entities.uye.UyeKimlik"/>
+		<mapping class="com.busra.bitirme.commons.entities.Notlar"/>
+		<mapping class="com.busra.bitirme.commons.entities.gecmis.OkutmaGecmisi"/>
+		<mapping class="com.busra.bitirme.commons.entities.uye.UyeSaglik"/>
+		<mapping class="com.busra.bitirme.commons.entities.Tavsiye"/>
+		<mapping class="com.busra.bitirme.commons.entities.gecmis.TuketimGecmisi"/>
+		<mapping class="com.busra.bitirme.commons.entities.uye.UyeVucut"/>
+		<mapping class="com.busra.bitirme.commons.entities.YorumSikayetOneri" />
+	</session-factory>
+</hibernate-configuration>

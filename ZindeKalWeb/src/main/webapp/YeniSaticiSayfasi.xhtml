@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Yeni Satici Sayfasi</title>
+
+	<h:outputStylesheet library="css" name="common-style.css" />
+</h:head>
+
+<h:body>
+	<ui:composition template="template/common/commonLayout.xhtml">
+		<ui:define name="content">
+			<h:form styleClass="form-horizontal" role="form">
+				<div class="panel panel-info" style="margin-top : 37px">
+					<div class="panel-heading">
+						<h3 class="panel-title">Üye ol</h3>
+					</div>
+					<div class="panel-body">
+						<h:panelGroup>
+
+							<div>
+								<h:outputLabel for="kimlikNo" class="col-sm-2 control-label">Kimlik No</h:outputLabel>
+								<div class="col-sm-4">
+									<h:inputText id="kimlikNo" type="Kimlik No"
+										class="form-control" placeholder="Kimlik No"
+										value="#{yeniSaticiSayfasiBean.satici.saticiKimlikNo}"></h:inputText>
+
+								</div>
+							</div>
+						</h:panelGroup>
+
+						<BR />
+						<BR />
+
+						<h:panelGroup>
+							<div>
+								<h:outputLabel for="kimlikKodu" class="col-sm-2 control-label">Kurum Kodu</h:outputLabel>
+								<div class="col-sm-4">
+									<h:inputText id="kimlikKodu" type="kimlikKodu"
+										class="form-control" placeholder="Kimlik Kodu"
+										value="#{yeniSaticiSayfasiBean.satici.kurumKodu}"></h:inputText>
+
+								</div>
+							</div>
+
+							<div>
+								<h:outputLabel for="kimlikAdi" class="col-sm-2 control-label">Kurum Adı</h:outputLabel>
+								<div class="col-sm-4">
+									<h:inputText id="kimlikAdi" type="kimlikAdi"
+										class="form-control" placeholder="Kimlik Adi"
+										value="#{yeniSaticiSayfasiBean.satici.kurumAdi}"></h:inputText>
+
+								</div>
+							</div>
+						</h:panelGroup>
+						<BR />
+						<BR />
+						<h:panelGroup>
+							<div>
+								<h:outputLabel for="saticiIsim" class="col-sm-2 control-label">İsim</h:outputLabel>
+								<div class="col-sm-4">
+									<h:inputText id="saticiIsim" type="saticiIsim"
+										class="form-control" placeholder="saticiIsim"
+										value="#{yeniSaticiSayfasiBean.satici.saticiIsim}"></h:inputText>
+
+								</div>
+							</div>
+							<div>
+								<h:outputLabel for="saticiSoyIsim"
+									class="col-sm-2 control-label">Soy isim</h:outputLabel>
+								<div class="col-sm-4">
+									<h:inputText id="saticiSoyIsim" type="saticiSoyIsim"
+										class="form-control" placeholder="saticiSoyIsim"
+										value="#{yeniSaticiSayfasiBean.satici.saticiSoyIsim}"></h:inputText>
+
+								</div>
+							</div>
+						</h:panelGroup>
+						<BR />
+						<BR />
+						<h:panelGroup>
+							<div>
+								<h:outputLabel for="saticiTelefon"
+									class="col-sm-2 control-label">Telefon</h:outputLabel>
+
+								<div class="col-sm-4">
+									<h:inputText id="saticiTelefon" type="saticiTelefon"
+										class="form-control" placeholder="saticiTelefon"
+										value="#{yeniSaticiSayfasiBean.satici.saticiTelefon}"></h:inputText>
+
+								</div>
+							</div>
+
+							<div>
+
+								<h:outputLabel for="saticiMail" class="col-sm-2 control-label">E-Mail</h:outputLabel>
+								<div class="col-sm-4">
+									<h:inputText id="saticiMail" type="saticiMail"
+										class="form-control" placeholder="saticiMail"
+										value="#{yeniSaticiSayfasiBean.satici.saticiMail}"></h:inputText>
+
+								</div>
+							</div>
+						</h:panelGroup>
+						<BR />
+						<BR />
+
+						<h:panelGroup>
+							<div>
+								<h:outputLabel for="icerik" class="col-sm-2 control-label">Şifre</h:outputLabel>
+
+								<div class="col-sm-4">
+									<h:inputSecret id="saticiSifre" type="saticiSifre"
+										class="form-control" placeholder="saticiSifre"
+										value="#{yeniSaticiSayfasiBean.satici.saticiSifre}">
+									</h:inputSecret>
+								</div>
+							</div>
+
+						</h:panelGroup>
+
+						<BR />
+						<BR />
+						<div class="btn-group-wrap">
+							<div class="btn-group">
+								<h:commandButton value="Kaydet"
+									styleClass="btn btn-primary space"
+									action="#{yeniSaticiSayfasiBean.yeniSaticiKaydet}" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

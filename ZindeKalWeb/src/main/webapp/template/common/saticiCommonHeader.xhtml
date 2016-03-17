@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition>
+	<title><ui:insert name="title">Satıcı Yönetim Paneli</ui:insert>
+	</title>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div id="topBanner">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#home">Zinde Kal</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="#about">Hakkımızda</a></li>
+				<li><a href="#services">Hizmetlerimiz</a></li>
+				<li><a href="#contact">İletişim</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav navbar-right" style="padding-right: 10px;">
+				<li>
+					<h5 style="color: white; padding-top: 8px;">
+						<em><ui:insert name="h4">Sağlıklı Bir Yaşama Hoşgeldin </ui:insert></em>
+						<em><ui:insert name="h4"><h:outputText value="#{girisSayfasiBackingBean.saticiIsim}"></h:outputText></ui:insert></em>
+					</h5>
+				</li>
+				<li><a>|</a></li>
+				<li><a href="#{request.contextPath}/GirisSayfasi.xhtml"
+					style="color: white;">Çıkış</a></li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+
+	</div>
+	</nav>
+	<div id="bottomBanner">
+		<div class="row">
+			<div id="Logo">
+				<img class="displayed"
+					src="http://localhost:8080/ZindeKalWeb/resources/images/ikon.JPG"
+					alt="" />
+			</div>
+
+
+		</div>
+
+	</div>
+
+	<div class="menu">
+		<div class="row">
+			<h1 class="text-center">Nott</h1>
+			<div class="list-group">
+
+				<a href="SaticiGiris.xhtml" class="list-group-item">
+					<h4 class="text-center">Anasayfa</h4>
+				</a> <a href="SaticiProfil.xhtml" class="list-group-item"><h4
+						class="text-center">Profilim</h4></a> <a
+					href="YeniUrunEklemeSayfasi.xhtml" class="list-group-item"><h4
+						class="text-center">Ürün Ekle</h4></a> <a
+					href="UrunSilmeSayfasi.xhtml" class="list-group-item"><h4
+						class="text-center">Ürün Sil</h4></a> <a
+					href="UrunGuncellemeSayfasi.xhtml" class="list-group-item"><h4
+						class="text-center">Ürün Bilgi Güncellemesi</h4></a> <a
+					href="SaticiRaporGoruntulemeSayfasi.xhtml" class="list-group-item"><h4
+						class="text-center">Raporları Görüntüle</h4></a><a
+					href="SaticiYorumSikayetOneriDenetlemeSayfasi.xhtml"
+					class="list-group-item"><h4 class="text-center">Yorum /
+						Şikayet / Öneri Denetleme</h4></a>
+			</div>
+		</div>
+	</div>
+</ui:composition>
+</html>

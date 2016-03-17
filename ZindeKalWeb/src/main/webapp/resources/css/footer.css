@@ -1,0 +1,246 @@
+
+footer {
+	display: block !important;
+	overflow: visible !important;
+	width: 100%;
+	/* 	float: right; */
+	margin: 0 auto;
+	background: black;
+}
+footer .widget h4 {
+	margin-top: 20px;
+	font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	color: #F5ECEC;
+	text-transform: uppercase;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .7);
+}
+
+
+footer h5 {
+	font-size: 14px;
+	margin: 0 0 10px;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: #fff;
+	letter-spacing: 0;	
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+footer a{
+color: #9d426b;
+text-decoration: none;
+-o-transition: all .3s;
+-moz-transition: all .3s;
+-webkit-transition: all .3s;
+-ms-transition: all .3s;
+}
+footer a:hover {
+	color: #fff;
+}
+
+footer h5 {
+	font-family: 'proxima nova', 'Helvetica Neue', Helvetica, sans-serif;
+	font-size: 14px;
+	margin: 0 0 10px;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+footer .widget {
+	margin-top: 20px;
+	text-align: left;
+}
+
+footer .widget h4 {
+	margin-top: 20px;
+	font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	color: #5d5d5d;
+	text-transform: uppercase;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .7);
+}
+
+footer .widget p {
+	line-height: 24px;
+}
+
+footer .widget i {
+	padding-right: 7px;
+	font-style: italic;
+}
+
+footer  .panel {
+	background-color: white;
+	position: absolute;
+	bottom: 0;
+}
+
+footer #bottomFooter {
+	background-color: white;;
+	bottom: 0;
+	width: 100%;
+}
+
+/* /* Twitter feed */
+.show-tweets { margin:0;
+	
+}
+
+.tweet_list {
+	height: 10em;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tweet_list li {
+	height: 100%;
+	list-style-type: none;
+	line-height: 24px;
+
+}
+
+.tweet_list .tweet_avatar {
+	float: left;
+}
+
+.tweet_list .tweet_avatar img {
+	vertical-align: middle;
+}
+
+/
+* Flickr feed
+
+.flickr-feed {
+	margin: 16px 0 0 0;
+}
+
+.flickr-feed li {
+	float: left;
+	padding: 0 4px 4px 0;
+	list-style: none;
+}
+
+.flickr-feed li img {
+	width: 50px;
+	border: 2px solid #eaeaea;
+}
+
+.flickr-feed a:hover {
+	opacity: 0.7;
+}
+footer .footer-border {
+	margin-top: 30px;
+	border-top: 1px dashed #ddd;
+}
+
+footer .copyright {
+	margin-top: 15px;
+	text-align: left;
+}
+
+footer .social {
+	margin-top: 10px;
+	text-align: right;
+	display: inline-block;
+	height: 24px;
+	vertical-align: middle;
+	float: right;
+}
+
+footer .social a {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin: 0 0 0 8px;
+	position: relative;
+}
+a:hover {
+color: #888;
+text-decoration: none;
+}
+footer .social a.twitter {
+	background:
+		url(http://localhost:8080/ZindeKalWeb/resources/images/social-icons/twitter.png)
+		left bottom no-repeat;
+}
+
+
+footer .social a.dribbble {
+	background: url(http://localhost:8080/ZindeKalWeb/resources/images/social-icons/dribbble.png) left
+		bottom no-repeat;
+}
+
+footer .social a.rss {
+	background: url(../images/social-icons/social-icons/rss.png) left bottom
+		no-repeat;
+}
+
+footer .social a.pinterest {
+	background: url(http://localhost:8080/ZindeKalWeb/resources/images/social-icons/rss.png) left
+		bottom no-repeat;
+}
+
+footer .social a.flickr {
+	background: url(http://localhost:8080/ZindeKalWeb/resources/images/social-icons/flickr.png) left
+		bottom no-repeat;
+}
+
+footer .social a.forrst {
+	background: url(http://localhost:8080/ZindeKalWeb/resources/images/social-icons/forrst.png) left
+		bottom no-repeat;
+}
+
+footer .social a.vimeo {
+	background: url(http://localhost:8080/ZindeKalWeb/resources/images/social-icons/vimeo.png) left
+		bottom no-repeat;
+}
+
+footer .social a.linkedin {
+	background: url(http://localhost:8080/ZindeKalWeb/resources/images/social-icons/likedin.png) left
+		bottom no-repeat;
+}
+
+footer .social a.facebook {
+	background: url(http://localhost:8080/ZindeKalWeb/resources/images/social-icons/facebook.png) left
+		bottom no-repeat;
+}
+
+footer .social a.email {
+	background: url(http://localhost:8080/ZindeKalWeb/resources/images/social-icons/email.png) left
+		bottom no-repeat;
+}
+
+footer .social a.github {
+	background: url(http://localhost:8080/ZindeKalWeb/resources/images/social-icons/github.png) left
+		bottom no-repeat;
+}
+
+footer .social a.behance {
+	background: url(http://localhost:8080/ZindeKalWeb/resources/images/social-icons/behance.png) left
+		bottom no-repeat;
+}
+
+footer .social a.googleplus {
+	background: url(http://localhost:8080/ZindeKalWeb/resources/images/social-icons/googleplus.png) left
+		bottom no-repeat;
+}
+
+footer .social a.youtube {
+	background: url(http://localhost:8080/ZindeKalWeb/resources/images/social-icons/youtube.png) left
+		bottom no-repeat;
+}
+
+footer .social a.skype {
+	background: url(http://localhost:8080/ZindeKalWeb/resources/images/social-icons/skype.png) left
+		bottom no-repeat;
+}
+
+footer .social a.tumblr {
+	background: url(http://localhost:8080/ZindeKalWeb/resources/images/social-icons/tumblr.png) left
+		bottom no-repeat;
+}
+
+footer .social a:hover {
+	background-position: left top;
+}

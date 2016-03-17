@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:metadata>
+	<f:event type="preRenderView" listener="#{yorumSikayetOneriDenetlemeBean.yorumSikayetOneriListeleriniDoldur}" />
+	<f:event type="preRenderView" listener="#{gelenSaticiUyelikSayfasiBean.saticiIstekSayisiniBul}" />
+</f:metadata>
+
+<h:head>
+	<title>Profil Sayfasi</title>
+</h:head>
+
+<h:body>
+	<ui:composition template="template/common/adminCommonLayout.xhtml">
+		<ui:define name="content">
+			<h:form styleClass="form-horizontal" role="form">
+				<div class="panel panel-info panel-admin-top">
+					<div class="panel-heading">
+						<h3 class="panel-title">Profil Bilgileri</h3>
+					</div>
+					<div class="panel-body">
+
+						<div class="form-group">
+							<h:outputLabel styleClass="col-sm-2 control-label">Kimlik No</h:outputLabel>
+							<div class="col-sm-3">
+								<h:inputText class="form-control"
+									value="#{adminProfilBean.admin.saticiKimlikNo}"></h:inputText>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<h:outputLabel styleClass="col-sm-2 control-label">İsim</h:outputLabel>
+							<div class="col-sm-3">
+								<h:inputText class="form-control"
+									value="#{adminProfilBean.admin.saticiIsim}"></h:inputText>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<h:outputLabel styleClass="col-sm-2 control-label">Soyisim</h:outputLabel>
+							<div class="col-sm-3">
+								<h:inputText class="form-control"
+									value="#{adminProfilBean.admin.saticiSoyIsim}"></h:inputText>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<h:outputLabel styleClass="col-sm-2 control-label">Telefon</h:outputLabel>
+							<div class="col-sm-3">
+								<h:inputText class="form-control"
+									value="#{adminProfilBean.admin.saticiTelefon}"></h:inputText>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<h:outputLabel styleClass="col-sm-2 control-label">E-Mail Adres</h:outputLabel>
+							<div class="col-sm-3">
+								<h:inputText class="form-control"
+									value="#{adminProfilBean.admin.saticiMail}"></h:inputText>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-4">
+								<h:commandButton value="Güncellemeyi Kaydet"
+									styleClass="btn btn-primary space"
+									actionListener="#{adminProfilBean.adminProfilBilgileriGuncelle}"
+									onclick="alert('Güncelleme Tamamlandı');" />
+
+								<h:commandButton value="İptal Et" styleClass="btn btn-danger"
+									style="margin-left: 5px;" outcome="AdminGirisSayfasi.xhtml" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<h:outputScript library="js" name="jquery.min.js" />
+	<h:outputScript library="js" name="jquery.js" />
+	<h:outputScript library="js" name="jquery-1.10.2.js" />
+	<h:outputScript library="js" name="bootstrap.js" />
+	<h:outputStylesheet library="css" name="homepage.css" />
+	<h:outputStylesheet library="css" name="common-style.css" />
+	<h:outputStylesheet library="css" name="bootstrap.css" />
+	<link rel="shortcut icon" href="resources/images/favicon.ico"></link>
+</h:head>
+
+<h:body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-3">
+					<ui:include src="adminCommonHeader.xhtml" />
+				</div>
+
+				<!-- <div class="slogan col-md-9">
+					<p id="top" class="text-center">ZİNDE KAL</p>
+					<p id="bottom" class="text-center">MUTLU YAŞA</p>
+				</div>  -->
+
+				<div class="col-md-9">
+					<ui:insert name="content" />
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<ui:include src="commonFooter.xhtml" />
+		</div>
+
+	</div>
+</h:body>
+</html>

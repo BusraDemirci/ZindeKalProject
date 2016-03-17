@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Ürün Güncelleme Sayfası</title>
+</h:head>
+<h:body>
+	<ui:composition template="template/common/saticiCommonLayout.xhtml">
+		<ui:define name="content">
+			<h:form styleClass="form-horizontal" role="form">
+
+				<div class="panel panel-info panel-top">
+					<div class="panel-heading">
+						<h3 class="panel-title">Ürün Güncelle</h3>
+					</div>
+					<div class="panel-body">
+						<div class="container" style="overflow-x: scroll;">
+							<div class="form-group">
+								<h:outputLabel styleClass="col-sm-2 control-label">Barkod No</h:outputLabel>
+								<div class="col-sm-3">
+									<h:inputText class="form-control" autocomplete="on"
+										value="#{urunBean.barkodNo}"></h:inputText>
+								</div>
+
+								<div class="col-sm-3">
+									<h:commandButton value="Araştır" class="btn btn-info"
+										actionListener="#{urunBean.barkodNoYaDaIsmeGoreUrunAra}">
+
+									</h:commandButton>
+								</div>
+							</div>
+							<br /> <br />
+
+							<h:panelGroup rendered="#{urunBean.butonaBasildimi==true}">
+								<em><h:outputText rendered="#{urunBean.urunSayisi==0}"
+										value="Aynı barkod nolu ürün sistemimizde mevcut değildir."
+										class="alert alert-danger" /></em>
+								<!-- <em><h:outputText rendered="#{urunBean.urunSayisi==0}"
+										value="Aynı barkod nolu ürün sistemimizde mevcut değildir."
+										class="alert alert-danger" /></em> -->
+								<br />
+								<br />
+								<h:panelGroup rendered="#{urunBean.butonaBasildimi==true}">
+									<div class="panel panel-default" style="margin-top: 30px;">
+										<div class="panel-heading">Yardımcı Linkler</div>
+										<div class="panel-body">
+											<p>Barkod Numarası ile Araştırma Yapabileceğiniz Bazı
+												Yardımcı Sayfalar</p>
+										</div>
+
+										<!-- List group -->
+										<ul class="list-group">
+											<li class="list-group-item"><a href="#"
+												onclick="window.open('http://barkodoku.com/');">www.barkodoku.com</a></li>
+											<li class="list-group-item"><a href="#"
+												onclick="window.open('http://www.portakalsepetim.com/');">www.portakalsepetim.com</a></li>
+											<li class="list-group-item"><a href="#"
+												onclick="window.open('http://shop.netbilgi.com.tr/');">www.shop.netbilgi.com</a></li>
+
+										</ul>
+									</div>
+								</h:panelGroup>
+							</h:panelGroup>
+							<br /> <br />
+
+							<h:dataTable id="urunOzellikTable" class="table table-striped"
+								value="#{urunBean.urunOzellikList}" var="urunOzellik"
+								rendered="#{urunBean.urunSayisi!=0}">
+								<h:column>
+									<f:facet name="header">Barkod No</f:facet>
+									<h:outputText value="#{urunOzellik.barkodNo}"
+										rendered="#{not urunOzellik.editable}" />
+									<h:inputText value="#{urunBean.urunOzellik.barkodNo}"
+										class="form-control" rendered="#{urunOzellik.editable}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Ürün İsmi</f:facet>
+									<h:outputText value="#{urunOzellik.urunIsim}"
+										rendered="#{not urunOzellik.editable}" />
+									<h:inputText value="#{urunBean.urunOzellik.urunIsim}"
+										class="form-control" rendered="#{urunOzellik.editable}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Kategori</f:facet>
+									<h:outputText value="#{urunOzellik.kategori}"
+										rendered="#{not urunOzellik.editable}" />
+									<h:inputText value="#{urunBean.urunOzellik.kategori}"
+										class="form-control" rendered="#{urunOzellik.editable}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">S.K.T.</f:facet>
+									<h:outputText value="#{urunOzellik.skt}"
+										rendered="#{not urunOzellik.editable}">
+										<f:convertDateTime pattern="dd MMMM yyyy" />
+									</h:outputText>
+									<h:inputText value="#{urunBean.urunOzellik.skt}"
+										class="form-control" rendered="#{urunOzellik.editable}">
+										<f:convertDateTime pattern="dd MMMM yyyy" />
+									</h:inputText>
+
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">İçerik</f:facet>
+									<h:outputText value="#{urunOzellik.urunIcerik}"
+										rendered="#{not urunOzellik.editable}" />
+									<h:inputText value="#{urunBean.urunOzellik.urunIcerik}"
+										class="form-control" rendered="#{urunOzellik.editable}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">#</f:facet>
+									<h:commandLink value="Düzenle"
+										actionListener="#{urunBean.editOz}"
+										rendered="#{not urunOzellik.editable}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">İptal</f:facet>
+									<h:commandLink value="İptal"
+										actionListener="#{urunBean.editOzIptal}"
+										rendered="#{urunOzellik.editable}" />
+								</h:column>
+
+							</h:dataTable>
+
+							<h:dataTable id="urunIcerikTable"
+								value="#{urunBean.urunIcerikList}" class="table table-striped"
+								var="urunIcerik" rendered="#{urunBean.urunSayisi!=0}">
+								<h:column>
+									<f:facet name="header">Doymuş Yağ Oranı</f:facet>
+									<h:outputText value="#{urunIcerik.urunDoymusYag}"
+										rendered="#{not urunIcerik.editable}" />
+									<h:inputText value="#{urunBean.urunIcerik.urunDoymusYag}"
+										class="form-control" rendered="#{urunIcerik.editable}">
+										<f:convertNumber minFractionDigits="2" />
+									</h:inputText>
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Enerji(cal)</f:facet>
+									<h:outputText value="#{urunIcerik.urunEnerji}"
+										rendered="#{not urunIcerik.editable}" />
+									<h:inputText value="#{urunBean.urunIcerik.urunEnerji}"
+										class="form-control" rendered="#{urunIcerik.editable}">
+										<f:convertNumber minFractionDigits="2" />
+									</h:inputText>
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Kalsiyum</f:facet>
+									<h:outputText value="#{urunIcerik.urunKalsiyum}"
+										rendered="#{not urunIcerik.editable}" />
+									<h:inputText value="#{urunBean.urunIcerik.urunKalsiyum}"
+										class="form-control" rendered="#{urunIcerik.editable}">
+										<f:convertNumber minFractionDigits="2" />
+									</h:inputText>
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Karbonhidrat</f:facet>
+									<h:outputText value="#{urunIcerik.urunKarbonhidrat}"
+										rendered="#{not urunIcerik.editable}" />
+									<h:inputText value="#{urunBean.urunIcerik.urunKarbonhidrat}"
+										class="form-control" rendered="#{urunIcerik.editable}">
+										<f:convertNumber minFractionDigits="2" />
+									</h:inputText>
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Kolestrol</f:facet>
+									<h:outputText value="#{urunIcerik.urunKolestrol}"
+										rendered="#{not urunIcerik.editable}" />
+									<h:inputText value="#{urunBean.urunIcerik.urunKolestrol}"
+										class="form-control" rendered="#{urunIcerik.editable}">
+										<f:convertNumber minFractionDigits="2" />
+									</h:inputText>
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Lif</f:facet>
+									<h:outputText value="#{urunIcerik.urunLif}"
+										rendered="#{not urunIcerik.editable}" />
+									<h:inputText value="#{urunBean.urunIcerik.urunLif}"
+										class="form-control" rendered="#{urunIcerik.editable}">
+										<f:convertNumber minFractionDigits="2" />
+									</h:inputText>
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Protein</f:facet>
+									<h:outputText value="#{urunIcerik.urunProtein}"
+										rendered="#{not urunIcerik.editable}" />
+									<h:inputText value="#{urunBean.urunIcerik.urunProtein}"
+										class="form-control" rendered="#{urunIcerik.editable}">
+										<f:convertNumber minFractionDigits="2" />
+									</h:inputText>
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Şeker</f:facet>
+									<h:outputText value="#{urunIcerik.urunSeker}"
+										rendered="#{not urunIcerik.editable}" />
+									<h:inputText value="#{urunBean.urunIcerik.urunSeker}"
+										class="form-control" rendered="#{urunIcerik.editable}">
+										<f:convertNumber minFractionDigits="2" />
+									</h:inputText>
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Trans Yağ</f:facet>
+									<h:outputText value="#{urunIcerik.urunTransYag}"
+										rendered="#{not urunIcerik.editable}" />
+									<h:inputText value="#{urunBean.urunIcerik.urunTransYag}"
+										class="form-control" rendered="#{urunIcerik.editable}">
+										<f:convertNumber minFractionDigits="2" />
+									</h:inputText>
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Tuz</f:facet>
+									<h:outputText value="#{urunIcerik.urunTuz}"
+										rendered="#{not urunIcerik.editable}" />
+									<h:inputText value="#{urunBean.urunIcerik.urunTuz}"
+										class="form-control" rendered="#{urunIcerik.editable}">
+										<f:convertNumber minFractionDigits="2" />
+									</h:inputText>
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Yağ</f:facet>
+									<h:outputText value="#{urunIcerik.urunYag}"
+										rendered="#{not urunIcerik.editable}" />
+									<h:inputText value="#{urunBean.urunIcerik.urunYag}"
+										class="form-control" rendered="#{urunIcerik.editable}">
+										<f:convertNumber minFractionDigits="2" />
+									</h:inputText>
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">#</f:facet>
+									<h:commandLink value="Düzenle"
+										actionListener="#{urunBean.editIc}"
+										rendered="#{not urunIcerik.editable}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">İptal</f:facet>
+									<h:commandLink value="İptal"
+										actionListener="#{urunBean.editIcIptal}"
+										rendered="#{urunIcerik.editable}" />
+								</h:column>
+
+							</h:dataTable>
+
+
+							<!--  değişkenleri çevirken türlerine göre cast edilmiş mi kontrol et..  -->
+							<br /> <br />
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-4">
+									<h:commandButton value="Güncellemeyi kaydet"
+										styleClass="btn btn-success"
+										actionListener="#{urunBean.urunGuncelle}"
+										rendered="#{urunBean.urunSayisi!=0}" />
+
+									<h:commandButton value="İptal" style="margin-left:5px;"
+										action="#{urunBean.guncellemeIptal}"
+										styleClass="btn btn-danger"
+										rendered="#{urunBean.urunSayisi!=0}" />
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+
+</h:body>
+</html>

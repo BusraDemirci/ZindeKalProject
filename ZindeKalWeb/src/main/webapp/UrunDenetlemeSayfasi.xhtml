@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Urun Denetleme Sayfasi</title>
+</h:head>
+
+<h:body>
+	<ui:composition template="template/common/adminCommonLayout.xhtml">
+		<ui:define name="content">
+			<h:form styleClass="form-horizontal" role="form"
+				id="urunDenetlemeFormId">
+				<div class="panel panel-info panel-admin-top">
+					<div class="panel-heading">
+						<h3 class="panel-title">Ürün Denetle</h3>
+					</div>
+					<div class="panel-body" id="panel">
+						<div class="form-group">
+							<h:outputLabel styleClass="col-sm-2 control-label">Barkod No</h:outputLabel>
+							<div class="col-sm-3">
+								<h:inputText class="form-control" autocomplete="on"
+									value="#{urunDenetlemeSayfasiBean.barkodNo}"></h:inputText>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-3 col-sm-3">
+								<h:outputText class="text-danger" value="ya da"></h:outputText>
+							</div>
+						</div>
+						<div class="form-group">
+							<h:outputLabel styleClass="col-sm-2 control-label">Ürün İsim</h:outputLabel>
+							<div class="col-sm-3">
+								<h:inputText class="form-control" autocomplete="on"
+									value="#{urunDenetlemeSayfasiBean.urunIsim}"></h:inputText>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-3">
+								<h:commandButton value="Araştır" class="btn btn-success"
+									actionListener="#{urunDenetlemeSayfasiBean.barkodNoYaDaIsmeGoreUrunAra}">
+									<f:ajax execute="@form" render="@form" />
+								</h:commandButton>
+							</div>
+						</div>
+						<h:dataTable id="urunlist" class="table table-striped"
+							value="#{urunDenetlemeSayfasiBean.urunList}" var="urun"
+							rendered="#{not empty urunDenetlemeSayfasiBean.urunList}">
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Barkod No" />
+								</f:facet>
+								<h:outputText value="#{urun.barkodNo}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Urun Isim" />
+								</f:facet>
+								<h:outputText value="#{urun.urunIsim}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Urun Kategori" />
+								</f:facet>
+								<h:outputText value="#{urun.kategori}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Son Kullanma Tarihi" />
+								</f:facet>
+								<h:outputText value="#{urun.skt}" />
+							</h:column>
+							<!-- <h:column>
+						<f:facet name="header">
+							<h:outputText value="Kurum Adı" />
+						</f:facet>
+						<ui:repeat var="satici" value="#{urun.saticilar}">
+								<h:outputText value="#{satici.kurumAdi}" />
+								<br />
+							</ui:repeat>  
+					</h:column>-->
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="#" />
+								</f:facet>
+								<h:commandLink value="Ürün İçeriğine Göz At"
+									onclick="$('.urunDetayPopup').modal('toggle');"
+									actionListener="#{urunDenetlemeSayfasiBean.urunIdsineGoreUrunIcerigiGetir}">
+									<f:param name="urunBarkod" value="#{urun.barkodNo}" />
+									<f:ajax render=":urunDenetlemeFormId:urunDetayPopupIcerik"
+										execute="@this" />
+								</h:commandLink>
+							</h:column>
+						</h:dataTable>
+
+						<div class="modal fade urunDetayPopup" tabindex="-1" role="dialog"
+							aria-labelledby="urunDetayPopupTitle" aria-hidden="true">
+							<div class="modal-dialog modal-lg" style="width: 1000px;">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-hidden="true">x</button>
+										<h4 class="modal-title" id="urunDetayPopupTitle">Ürün
+											İçerik Detayı</h4>
+									</div>
+									<div class="modal-body">
+										<h:panelGroup id="urunDetayPopupIcerik">
+											<h:dataTable class="table table-condensed"
+												value="#{urunDenetlemeSayfasiBean.urunIcerik}" var="urun">
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Barkod No" />
+													</f:facet>
+													<h:outputText value="#{urun.barkodNo}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Doymuş Yağ" />
+													</f:facet>
+													<h:outputText value="#{urun.urunDoymusYag}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Enerji" />
+													</f:facet>
+													<h:outputText value="#{urun.urunEnerji}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Kalsiyum" />
+													</f:facet>
+													<h:outputText value="#{urun.urunKalsiyum}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Karbonhidrat" />
+													</f:facet>
+													<h:outputText value="#{urun.urunKarbonhidrat}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Kolestrol" />
+													</f:facet>
+													<h:outputText value="#{urun.urunKolestrol}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Lif" />
+													</f:facet>
+													<h:outputText value="#{urun.urunLif}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Protein" />
+													</f:facet>
+													<h:outputText value="#{urun.urunProtein}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Şeker" />
+													</f:facet>
+													<h:outputText value="#{urun.urunSeker}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Tuz" />
+													</f:facet>
+													<h:outputText value="#{urun.urunTuz}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Yağ" />
+													</f:facet>
+													<h:outputText value="#{urun.urunYag}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Trans Yağ" />
+													</f:facet>
+													<h:outputText value="#{urun.urunTransYag}" />
+												</h:column>
+											</h:dataTable>
+										</h:panelGroup>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

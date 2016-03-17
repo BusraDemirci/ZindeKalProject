@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:metadata>
+	<f:event type="preRenderView" listener="#{yorumSikayetOneriDenetlemeBean.yorumSikayetOneriListeleriniDoldur}" />
+</f:metadata>
+
+<h:head>
+	<title>Yorum Sikayet Oneri Denetleme Sayfasi</title>
+</h:head>
+
+<h:body>
+	<ui:composition template="template/common/saticiCommonLayout.xhtml">
+		<ui:define name="content">
+			<h:form styleClass="form-horizontal" role="form">
+				<div class="panel panel-info panel-top">
+					<div class="panel-heading">
+						<h3 class="panel-title">Yorum Denetleme Paneli</h3>
+					</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<h:dataTable value="#{yorumSikayetOneriDenetlemeBean.yorumList}"
+								class="table table-hover"
+								rendered="#{not yorumSikayetOneriDenetlemeBean.yorumList.isEmpty()}"
+								var="yorum">
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Okundu" />
+									</f:facet>
+									<h:selectBooleanCheckbox>
+										<f:ajax
+											listener="#{yorumSikayetOneriDenetlemeBean.yorumuOnayla(yorum)}"
+											execute="@form" render="@all" />
+									</h:selectBooleanCheckbox>
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Konu" />
+									</f:facet>
+									<h:outputText value="#{yorum.konu}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Metin" />
+									</f:facet>
+									<h:outputText value="#{yorum.metin}" />
+								</h:column>
+								<!-- <h:column>
+									<f:facet name="header">
+										<h:outputText value="Üye İsim" />
+									</f:facet>
+									<h:outputText value="#{yorum.uye.uyeIsim}" />
+									<h:outputText value=" #{yorum.uye.uyeSoyisim}" />
+								</h:column> -->
+							</h:dataTable>
+
+							<em><h:outputText value="Gösterilecek yorum yok."
+									class="text-danger no-content"
+									rendered="#{yorumSikayetOneriDenetlemeBean.yorumList.isEmpty()}" /></em>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">Şikayet Denetleme Paneli</h3>
+					</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<h:dataTable
+								value="#{yorumSikayetOneriDenetlemeBean.sikayetList}"
+								class="table table-hover"
+								rendered="#{not yorumSikayetOneriDenetlemeBean.sikayetList.isEmpty()}"
+								var="sikayet">
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Okundu" />
+									</f:facet>
+									<h:selectBooleanCheckbox>
+										<f:ajax
+											listener="#{yorumSikayetOneriDenetlemeBean.sikayetiOnayla(sikayet)}"
+											execute="@form" render="@all" />
+									</h:selectBooleanCheckbox>
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Konu" />
+									</f:facet>
+									<h:outputText value="#{sikayet.konu}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Metin" />
+									</f:facet>
+									<h:outputText value="#{sikayet.metin}" />
+								</h:column>
+								<!-- <h:column>
+									<f:facet name="header">
+										<h:outputText value="Üye İsim" />
+									</f:facet>
+									<h:outputText value="#{sikayet.uye.uyeIsim}" />
+									<h:outputText value=" #{sikayet.uye.uyeSoyisim}" />
+								</h:column> -->
+							</h:dataTable>
+							<em><h:outputText value="Gösterilecek şikayet yok."
+									class="text-danger no-content"
+									rendered="#{yorumSikayetOneriDenetlemeBean.sikayetList.isEmpty()}" /></em>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">Öneri Denetleme Paneli</h3>
+					</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<h:dataTable value="#{yorumSikayetOneriDenetlemeBean.oneriList}"
+								class="table table-hover"
+								rendered="#{not yorumSikayetOneriDenetlemeBean.oneriList.isEmpty()}"
+								var="oneri">
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Okundu" />
+									</f:facet>
+									<h:selectBooleanCheckbox>
+										<f:ajax
+											listener="#{yorumSikayetOneriDenetlemeBean.oneriyiOnayla(oneri)}"
+											execute="@form" render="@all" />
+									</h:selectBooleanCheckbox>
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Konu" />
+									</f:facet>
+									<h:outputText value="#{oneri.konu}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Metin" />
+									</f:facet>
+									<h:outputText value="#{oneri.metin}" />
+								</h:column>
+								<!-- <h:column>
+									<f:facet name="header">
+										<h:outputText value="Üye İsim" />
+									</f:facet>
+									<h:outputText value="#{oneri.uye.uyeIsim}" />
+									<h:outputText value=" #{oneri.uye.uyeSoyisim}" />
+								</h:column> -->
+							</h:dataTable>
+							<em><h:outputText value="Gösterilecek öneri yok."
+									class="text-danger no-content"
+									rendered="#{yorumSikayetOneriDenetlemeBean.oneriList.isEmpty()}" /></em>
+						</div>
+					</div>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<h:outputStylesheet library="css" name="common-style.css" />
+	<h:outputStylesheet library="css" name="homepage.css" />
+	<h:outputScript library="js" name="resources/js/jquery.js" />
+</h:head>
+
+<h:body>
+
+	<ui:composition template="template/common/commonLayout.xhtml">
+		<ui:define name="content">
+			<h:form styleClass="form-horizontal" role="form">
+				<div class="col-md-12">
+					<div class="panel panel-default panel-top">
+						<div class="panel-body">
+							<div class="row carousel-holder" align="center">
+								<div id="carousel-example-generic" class="carousel slide"
+									data-ride="carousel">
+									<ol class="carousel-indicators">
+										<li data-target="#carousel-example-generic" data-slide-to="0"
+											class="active"></li>
+										<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+										<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+									</ol>
+									<div class="carousel-inner">
+										<div class="item active">
+											<h:graphicImage class="slide-image"
+												url="http://localhost:8080/ZindeKalWeb/resources/images/Picture4.jpg"
+												alt="Ne kadar sağlıklısınız?" />
+												<p class="flex-caption" align="center">Kendinizle barışık yaşamak için</p>
+										</div>
+										<div class="item">
+											<h:graphicImage class="slide-image"
+												url="http://localhost:8080/ZindeKalWeb/resources/images/Picture5.jpg"
+												alt="Ne kadar sağlıklısınız?" />
+												<p class="flex-caption" align="center">Alışverişte doğru tercihler yapabilmek için</p>
+										</div>
+										<div class="item">
+											<h:graphicImage class="slide-image"
+												url="http://localhost:8080/ZindeKalWeb/resources/images/Picture6.jpg"
+												alt="Sağlıklı besleniyor musunuz?" />
+											<p class="flex-caption" align="center">Sağlıklı ve doğru beslenebilmek için</p>
+
+										</div>
+										<div class="item">
+											<h:graphicImage class="slide-image"
+												url="http://localhost:8080/ZindeKalWeb/resources/images/Picture7.jpg"
+												alt="Sağlıklı besleniyor musunuz?" />
+												<p class="flex-caption" align="center">Zinde Kal ile hayata 1-0 önde başlayın</p>
+										</div>
+									</div>
+									<a class="left carousel-control"
+										href="#carousel-example-generic" data-slide="prev"> <span
+										class="glyphicon glyphicon-chevron-left"></span>
+									</a> <a class="right carousel-control"
+										href="#carousel-example-generic" data-slide="next"> <span
+										class="glyphicon glyphicon-chevron-right"></span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		
+				<div class="row">
+					<div class="col-sm-4 col-lg-4 col-md-4">
+						<div class="thumbnail">
+							<h:graphicImage class="slide-image"
+								url="http://localhost:8080/ZindeKalWeb/resources/images/optionPicture7.jpg" />
+
+							<div class="caption">
+								<h4 class="pull-right"></h4>
+								<h4>
+									<a href="#">Spor Yap</a>
+								</h4>
+								<p>
+									Basit egzersiz tavsiyelerimizle zinde kalın...
+								</p>
+							</div>
+							<div class="ratings">
+								<p class="pull-right"></p>
+								<p>
+									<span class="glyphicon glyphicon-star"></span> <span
+										class="glyphicon glyphicon-star"></span> <span
+										class="glyphicon glyphicon-star"></span> <span
+										class="glyphicon glyphicon-star"></span> <span
+										class="glyphicon glyphicon-star"></span>
+								</p>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-sm-4 col-lg-4 col-md-4">
+						<div class="thumbnail">
+							<h:graphicImage class="slide-image"
+								url="http://localhost:8080/ZindeKalWeb/resources/images/optionPicture6.jpg" />
+							<div class="caption">
+								<h4 class="pull-right"></h4>
+								<h4>
+									<a href="#">Sağlıklı Beslen</a>
+								</h4>
+								<p>Size özel beslenme tavsiyerine uyarak sağlıklı yaşamın
+									kapılarını aralayın...</p>
+							</div>
+							<div class="ratings">
+								<p class="pull-right"></p>
+								<p>
+									<span class="glyphicon glyphicon-star"></span> <span
+										class="glyphicon glyphicon-star"></span> <span
+										class="glyphicon glyphicon-star"></span> <span
+										class="glyphicon glyphicon-star"></span> <span
+										class="glyphicon glyphicon-star-empty"></span>
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-4 col-lg-4 col-md-4">
+						<div class="thumbnail">
+							<h:graphicImage class="slide-image"
+								url="http://localhost:8080/ZindeKalWeb/resources/images/optionPicture8.jpg" />
+							<div class="caption">
+								<h4 class="pull-right"></h4>
+								<h4>
+									<a href="#">Formda kal</a>
+								</h4>
+								<p>Hatırlatıcı uygulamasını da kullanarak daha sistemli
+									beslenin. Formda Kalın!</p>
+							</div>
+							<div class="ratings">
+								<p class="pull-right"></p>
+								<p>
+									<span class="glyphicon glyphicon-star"></span> <span
+										class="glyphicon glyphicon-star"></span> <span
+										class="glyphicon glyphicon-star"></span> <span
+										class="glyphicon glyphicon-star"></span> <span
+										class="glyphicon glyphicon-star-empty"></span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

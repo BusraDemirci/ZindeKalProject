@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>ZindeKalWeb</artifactId>
+	<packaging>war</packaging>
+	<name>ZindeKalWeb</name>
+	<parent>
+		<groupId>com.busra.bitirme</groupId>
+		<artifactId>ZindeKalProject</artifactId>
+		<version>1</version>
+	</parent>
+
+	<properties>
+		<jsf.version>2.1.7</jsf.version>
+		<jstl.version>1.2</jstl.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.busra.bitirme</groupId>
+			<artifactId>ZindeKalCommons</artifactId>
+			<version>1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>${jsf.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>${jsf.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+	</dependencies>
+
+</project>

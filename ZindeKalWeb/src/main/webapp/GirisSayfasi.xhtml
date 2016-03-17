@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<!-- <h:outputStylesheet library="css" name="common-style.css" /> -->
+	<h:outputScript library="js" name="jquery.min.js" />
+	<h:outputScript library="js" name="jquery.js" />
+	<h:outputScript library="js" name="jquery-1.10.2.js" />
+	<h:outputScript library="js" name="bootstrap.js" />
+	<h:outputStylesheet library="css" name="bootstrap.css" />
+	<link rel="shortcut icon" href="resources/images/favicon.ico"></link>
+	<h:messages layout="table" styleClass="messages error" infoClass="info"
+		errorClass="error" globalOnly="true" style="margin-left:300px;" />
+	<title>Giriş</title>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#form\\:girisButon').attr('data-loading-text', 'Bekleyiniz...');
+		});
+
+		$(document).on('click', '#form\\:girisButon', function() {
+			var btn = $(this)
+			btn.button('loading')
+			$.ajax().always(function() {
+				btn.button('reset')
+			});
+		});
+	</script>
+</h:head>
+
+<h:body>
+	<header class="jumbotron subhead">
+		<h1>
+			<em>Zinde Kal</em>
+		</h1>
+		<p class="lead">Sağlığınız Hep Cebinizde</p>
+	</header>
+
+
+
+	<div class="container">
+		<div class="row">
+			<div class=".col-md-6 .col-md-offset-3">
+				<h:form styleClass="form-horizontal" role="form" id="form">
+					<legend>Giriş Formu</legend>
+					<fieldset>
+						<!-- <h2 class="form-signin-heading col-sm-offset-2">Giriş Yapınız</h2> -->
+						<div class="form-group">
+							<h:outputLabel styleClass="col-sm-2 control-label">E-posta</h:outputLabel>
+							<div class="col-sm-4">
+								<h:inputText class="form-control" id="email"
+									value="#{girisSayfasiBean.satici.saticiMail}" autocomplete="on"
+									required="true" requiredMessage="E-posta alanı boş bırakılamaz"
+									validatorMessage="Lütfen geçerli bir e-posta adresi giriniz">
+									<f:validateRegex
+										pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+								</h:inputText>
+							</div>
+							<em><h:message for="email" style="color:red" /></em>
+						</div>
+						<div class="form-group">
+							<h:outputLabel styleClass="col-sm-2 control-label">Şifre</h:outputLabel>
+							<div class="col-sm-4">
+								<h:inputSecret class="form-control" redisplay="true" id="sifre"
+									required="true" requiredMessage="Parola alanı boş bırakılamaz"
+									value="#{girisSayfasiBean.satici.saticiSifre}" />
+							</div>
+							<em><h:message for="sifre" style="color:red" /></em>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<div class="checkbox col-sm-10">
+									<h:outputLabel class="control-label">
+										<small>Beni Hatırla</small>
+										<input type="checkbox" styleClass="col-sm-3" />
+									</h:outputLabel>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-2">
+								<h:commandButton value="Giriş" id="girisButon"
+									styleClass="btn btn-lg btn-success btn-block"
+									action="#{girisSayfasiBean.kullaniciRoluneGoreSayfaYonlendirme}">
+								</h:commandButton>
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-2">
+									<h:button value="Üye Olmak İçin Tıklayın" id="uyeLink"
+										outcome="YeniSaticiSayfasi.xhtml" class="btn btn-link" />
+								</div>
+							</div>
+						</div>
+						<h:outputText id="mesaj"></h:outputText>
+						<!-- <f:validateLength minimum="5" maximum="10" /> -->
+						<!-- <f:validateLongRange for="age" minimum="1" maximum="200" /> -->
+					</fieldset>
+				</h:form>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>

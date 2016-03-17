@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<h1>HELLO USER!</h1>
+	<h:form>
+		<h:panelGrid column="2">
+			<h:outputLabel value="Save New User"></h:outputLabel>
+				<h:outputLabel>First Name</h:outputLabel>
+				<h:inputText value="#{bean.uye.uyeIsim}" autocomplete="on"></h:inputText>
+			<h:commandButton value="Save" actionListener="#{bean.save}"></h:commandButton>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

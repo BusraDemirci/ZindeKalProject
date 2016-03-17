@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:metadata>
+	<f:event type="preRenderView" listener="#{gelenSaticiUyelikSayfasiBean.saticiIstekSayisiniBul}" />
+</f:metadata>
+
+<h:head>
+	<h:outputScript library="js" name="resources/js/jquery.js" />
+	<h:outputStylesheet library="css" name="common-style.css" />
+	<h:outputStylesheet library="css" name="homepage.css" />
+</h:head>
+
+<h:body>
+
+	<ui:composition template="template/common/adminCommonLayout.xhtml">
+		<ui:define name="content">
+			<h:form styleClass="form-horizontal" role="form">
+				<div class="panel panel-info panel-admin-top">
+					<div class="panel-heading">
+						<h3 class="panel-title">Satıcı Üyelik İsteklerini Denetleme
+							Paneli</h3>
+					</div>
+					<div class="panel-body">
+						<div class="col-md-9">
+							<h:outputText value="Onaylanmamış " class="text-success" />
+							<em><h:outputText
+									value="#{girisSayfasiBackingBean.yeniUyelikIstekSayisi}"
+									class="text-danger" /></em>
+							<h:outputText value=" kadar satıcı isteği bulunmaktadır. "
+								class="text-success" />
+							<h:commandLink value="Görmek için tıklayınız"
+								actionListener="#{gelenSaticiUyelikSayfasiBean.gelenSaticiUyelikIstekleriniBul}"
+								class="btn btn-warning btn-xs"
+								rendered="#{girisSayfasiBackingBean.yeniUyelikIstekSayisi != 0}">
+								<f:ajax execute="@form" render="@form" />
+							</h:commandLink>
+						</div>
+						<br /> <br /> <br /> <br />
+						<h:dataTable class="table table-hover"
+							value="#{gelenSaticiUyelikSayfasiBean.onayBekleyenSaticilar}"
+							var="onayBekleyenSatici"
+							rendered="#{not gelenSaticiUyelikSayfasiBean.onayBekleyenSaticilar.isEmpty()}">
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Kimlik No" />
+								</f:facet>
+								<h:outputText value="#{onayBekleyenSatici.saticiKimlikNo}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Isim" />
+								</f:facet>
+								<h:outputText value="#{onayBekleyenSatici.saticiIsim}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Soyisim" />
+								</f:facet>
+								<h:outputText value="#{onayBekleyenSatici.saticiSoyIsim}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Kurum Adı" />
+								</f:facet>
+								<h:outputText value="#{onayBekleyenSatici.kurumAdi}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Kurum Kodu" />
+								</f:facet>
+								<h:outputText value="#{onayBekleyenSatici.kurumKodu}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Kurum Kodu" />
+								</f:facet>
+								<h:outputText value="#{onayBekleyenSatici.kurumKodu}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Mail" />
+								</f:facet>
+								<h:outputText value="#{onayBekleyenSatici.saticiMail}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Telefon" />
+								</f:facet>
+								<h:outputText value="#{onayBekleyenSatici.saticiTelefon}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Onayla" />
+								</f:facet>
+								<h:commandLink id="onaylink"
+									action="#{gelenSaticiUyelikSayfasiBean.saticiyiOnayla(onayBekleyenSatici)}">
+									<h:graphicImage value="resources/images/done.png" />
+								</h:commandLink>
+								<h:message for="onaylink" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Reddet" />
+								</f:facet>
+								<h:commandLink id="reddlink"
+									action="#{gelenSaticiUyelikSayfasiBean.saticiyiReddet(onayBekleyenSatici)}">
+									<h:graphicImage value="resources/images/cancel.png" />
+								</h:commandLink>
+								<h:message for="reddlink" />
+							</h:column>
+						</h:dataTable>
+					</div>
+				</div>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

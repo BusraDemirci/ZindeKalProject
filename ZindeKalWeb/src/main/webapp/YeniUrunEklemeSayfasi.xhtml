@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Ürün Güncelleme Sayfası</title>
+</h:head>
+<h:body>
+	<ui:composition template="template/common/saticiCommonLayout.xhtml">
+		<ui:define name="content">
+			<h:form styleClass="form-horizontal" role="form">
+				<div class="panel panel-danger panel-top">
+					<div class="panel-heading">
+						<h3 class="panel-title">Yeni Ürün Ekle</h3>
+					</div>
+					<div class="panel-body" id="panel">
+						<div class="form-group">
+							<h:outputLabel styleClass="col-sm-2 control-label">Barkod No</h:outputLabel>
+							<div class="col-sm-3">
+								<h:inputText class="form-control" autocomplete="on"
+									value="#{urunBean.barkodNo}"></h:inputText>
+							</div>
+							<div class="col-sm-3">
+								<h:commandButton value="Araştır" class="btn btn-warning"
+									data-toggle="tooltip" data-placement="right"
+									title="Ekleyeceğiniz ürünün sistemimizde mevcut olup olmadığının kontrolünü buradan gerçekleştirebilirsiniz."
+									actionListener="#{urunBean.barkodNoYaDaIsmeGoreUrunAra}">
+									<f:ajax execute="@form" render="@form" />
+								</h:commandButton>
+							</div>
+						</div>
+						<h:panelGroup rendered="#{urunBean.butonaBasildimi==true}">
+							<h:outputText
+								value="Aynı barkod numarasına sahip ürün bulunmamaktadır."
+								class="text-danger" rendered="#{urunBean.urunSayisi==0}" />
+							<em><h:outputText rendered="#{urunBean.urunSayisi==0}"
+									value="Yeni ürünü, aşağıda mevcut panellerden ekleyebilirsiniz." class="text-danger" /></em>
+						</h:panelGroup>
+						<br /> <br /> <br />
+
+						<div class="panel panel-success">
+							<div class="panel-heading">
+								<h3 class="panel-title">Ürün Paket Bilgisi</h3>
+							</div>
+							<div class="panel-body">
+								<div class="form-group">
+									<div>
+										<h:outputLabel for="barkod" class="col-sm-2 control-label">Barkod No</h:outputLabel>
+										<div class="col-sm-4">
+											<h:inputText id="barkod" type="Barkod No"
+												class="form-control" placeholder="Barkod No"
+												value="#{urunBean.urunOzellik.barkodNo}" />
+										</div>
+									</div>
+									<div>
+										<h:outputLabel for="isim" class="col-sm-2 control-label">Ürün İsim</h:outputLabel>
+										<div class="col-sm-4">
+											<h:inputText id="isim" type="Ürün_İsmi" class="form-control"
+												placeholder="Ürün_İsmi"
+												value="#{urunBean.urunOzellik.urunIsim}" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div>
+										<h:outputLabel for="kategori" class="col-sm-2 control-label">Kategori</h:outputLabel>
+										<div class="col-sm-4">
+											<h:inputText id="kategori" type="Kategori"
+												class="form-control" placeholder="Kategori"
+												value="#{urunBean.urunOzellik.kategori}" />
+										</div>
+									</div>
+									<div>
+										<h:outputLabel for="skt" class="col-sm-2 control-label">S.K.T</h:outputLabel>
+										<div class="col-sm-4">
+											<h:inputText id="skt" type="S.K.T" class="form-control"
+												placeholder="S.K.T" value="#{urunBean.urunOzellik.skt}">
+												<f:convertDateTime pattern="yyyy MM dd" />
+											</h:inputText>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-warning">
+							<div class="panel-heading">
+								<h3 class="panel-title">Ürün İçerik Bilgisi</h3>
+							</div>
+							<div class="panel-body">
+								<div class="form-group">
+									<h:outputLabel for="icerik" class="col-sm-2 control-label">Ürün İçeriği</h:outputLabel>
+									<div class="col-sm-4">
+										<h:inputText id="icerik" type="ürün İçeriği"
+											class="form-control" placeholder="ürün İçeriği"
+											value="#{urunBean.urunOzellik.urunIcerik}" />
+									</div>
+								</div>
+								<br /> <br />
+								<div class="form-group">
+									<h:outputLabel for="Doymus_Yag" class="col-sm-2 control-label">Doymuş Yağ</h:outputLabel>
+									<div class="col-sm-4">
+										<h:inputText id="Doymus_Yag" type="Doymus Yag"
+											class="form-control" placeholder="Doymus Yag"
+											value="#{urunBean.urunIcerik.urunDoymusYag}" />
+									</div>
+									<h:outputLabel for="Enerji" class="col-sm-2 control-label">Enerji</h:outputLabel>
+									<div class="col-sm-4">
+										<h:inputText id="Enerji" type="Enerji" class="form-control"
+											placeholder="Enerji"
+											value="#{urunBean.urunIcerik.urunEnerji}" />
+									</div>
+								</div>
+								<div class="form-group">
+									<h:outputLabel for="Kalsiyum" class="col-sm-2 control-label">Kalsiyum</h:outputLabel>
+									<div class="col-sm-4">
+										<h:inputText id="Kalsiyum" type="Kalsiyum"
+											class="form-control" placeholder="Kalsiyum"
+											value="#{urunBean.urunIcerik.urunKalsiyum}" />
+									</div>
+									<h:outputLabel for="Karbonhidrat"
+										class="col-sm-2 control-label">Karbonhidrat</h:outputLabel>
+									<div class="col-sm-4">
+										<h:inputText id="Karbonhidrat" type="Karbonhidrat"
+											class="form-control" placeholder="Karbonhidrat"
+											value="#{urunBean.urunIcerik.urunKarbonhidrat}" />
+									</div>
+								</div>
+								<div class="form-group">
+									<h:outputLabel for="Kolestrol" class="col-sm-2 control-label">Kolestrol</h:outputLabel>
+									<div class="col-sm-4">
+										<h:inputText id="Kolestrol" type="ürün İçeriği"
+											class="form-control" placeholder="Kolestrol"
+											value="#{urunBean.urunIcerik.urunKolestrol}" />
+									</div>
+									<h:outputLabel for="Lif" class="col-sm-2 control-label">Lif</h:outputLabel>
+									<div class="col-sm-4">
+										<h:inputText id="Lif" type="ürün İçeriği" class="form-control"
+											placeholder="Lif" value="#{urunBean.urunIcerik.urunLif}" />
+									</div>
+								</div>
+								<div class="form-group">
+									<h:outputLabel for="Protein" class="col-sm-2 control-label">Protein</h:outputLabel>
+									<div class="col-sm-4">
+										<h:inputText id="Protein" type="Protein" class="form-control"
+											placeholder="Protein"
+											value="#{urunBean.urunIcerik.urunProtein}" />
+									</div>
+									<h:outputLabel for="Seker" class="col-sm-2 control-label">Şeker</h:outputLabel>
+									<div class="col-sm-4">
+										<h:inputText id="Seker" type="Seker" class="form-control"
+											placeholder="Seker" value="#{urunBean.urunIcerik.urunSeker}" />
+									</div>
+								</div>
+								<div class="form-group">
+									<h:outputLabel for="TransYag" class="col-sm-2 control-label">Trans Yağ</h:outputLabel>
+									<div class="col-sm-4">
+										<h:inputText id="TransYag" type="TransYag"
+											class="form-control" placeholder="TransYag"
+											value="#{urunBean.urunIcerik.urunTransYag}" />
+									</div>
+									<h:outputLabel for="Tuz" class="col-sm-2 control-label">Tuz</h:outputLabel>
+									<div class="col-sm-4">
+										<h:inputText id="Tuz" type="Tuz" class="form-control"
+											placeholder="Tuz" value="#{urunBean.urunIcerik.urunTuz}" />
+									</div>
+								</div>
+								<div class="form-group">
+									<h:outputLabel for="Yag" class="col-sm-2 control-label">Yağ</h:outputLabel>
+									<div class="col-sm-4">
+										<h:inputText id="Yag" type="Yag" class="form-control"
+											placeholder="Yag" value="#{urunBean.urunIcerik.urunYag}" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<br /> <br />
+
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title">Ürün Vitamin Bilgisi</h3>
+							</div>
+							<div class="panel-body">
+								<div class="form-group">
+									<div>
+										<h:outputLabel for="a" class="col-sm-2 control-label">A Vitamini</h:outputLabel>
+										<div class="col-sm-4">
+											<h:inputText id="a" class="form-control"
+												value="#{urunBean.urunVitamin.vitA}" />
+										</div>
+									</div>
+									<div>
+										<h:outputLabel for="b" class="col-sm-2 control-label">B Vitamini</h:outputLabel>
+										<div class="col-sm-4">
+											<h:inputText id="b" class="form-control"
+												value="#{urunBean.urunVitamin.vitB}" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div>
+										<h:outputLabel for="c" class="col-sm-2 control-label">C Vitamini</h:outputLabel>
+										<div class="col-sm-4">
+											<h:inputText id="c" class="form-control"
+												value="#{urunBean.urunVitamin.vitC}" />
+										</div>
+									</div>
+									<div>
+										<h:outputLabel for="d" class="col-sm-2 control-label">D Vitamini</h:outputLabel>
+										<div class="col-sm-4">
+											<h:inputText id="d" class="form-control"
+												value="#{urunBean.urunVitamin.vitD}" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div>
+										<h:outputLabel for="e" class="col-sm-2 control-label">E Vitamini</h:outputLabel>
+										<div class="col-sm-4">
+											<h:inputText id="e" class="form-control"
+												value="#{urunBean.urunVitamin.vitE}" />
+										</div>
+									</div>
+									<div>
+										<h:outputLabel for="k" class="col-sm-2 control-label">K Vitamini</h:outputLabel>
+										<div class="col-sm-4">
+											<h:inputText id="k" class="form-control"
+												value="#{urunBean.urunVitamin.vitK}" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-offset-5 col-sm-3">
+								<h:commandButton value="Ürünü Ekle"
+									styleClass="btn btn-primary btn-lg"
+									action="#{urunBean.urunKaydet}"
+									rendered="#{urunBean.urunSayisi==0}" />
+							</div>
+						</div>
+
+						<div class="col-sm-offset-5 col-sm-3">
+							<h:commandButton value="Ürünü Güncelle"
+								class="btn btn-danger btn-lg"
+								actionListener="#{urunBean.arananUrunBulunduktanSonraGuncelle}"
+								rendered="#{urunBean.urunSayisi!=0}">
+							</h:commandButton>
+						</div>
+					</div>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

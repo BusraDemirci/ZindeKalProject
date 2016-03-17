@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:metadata>
+	<f:event type="preRenderView" listener="#{saticiBean.saticiBul}" />
+</f:metadata>
+
+<h:head>
+	<title>Satici Profil Sayfasi</title>
+</h:head>
+
+<h:body>
+	<ui:composition template="template/common/saticiCommonLayout.xhtml">
+		<ui:define name="content">
+			<h:form styleClass="form-horizontal" role="form">
+
+				<div class="panel panel-info panel-top">
+					<div class="panel-heading">
+						<h3 class="panel-title">Profil Bilgileri</h3>
+					</div>
+					<div class="panel-body">
+
+						<div class="form-group">
+							<h:outputLabel styleClass="col-sm-2 control-label">Kimlik No</h:outputLabel>
+							<div class="col-sm-3">
+								<h:inputText class="form-control"
+									value="#{saticiBean.satici.saticiKimlikNo}"></h:inputText>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<h:outputLabel styleClass="col-sm-2 control-label">Kurum Adı</h:outputLabel>
+							<div class="col-sm-3">
+								<h:inputText class="form-control"
+									value="#{saticiBean.satici.kurumAdi}"></h:inputText>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<h:outputLabel styleClass="col-sm-2 control-label">Kurum Kodu</h:outputLabel>
+							<div class="col-sm-3">
+								<h:inputText class="form-control"
+									value="#{saticiBean.satici.kurumKodu}"></h:inputText>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<h:outputLabel styleClass="col-sm-2 control-label">İsim</h:outputLabel>
+							<div class="col-sm-3">
+								<h:inputText class="form-control"
+									value="#{saticiBean.satici.saticiIsim}"></h:inputText>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<h:outputLabel styleClass="col-sm-2 control-label">Soyisim</h:outputLabel>
+							<div class="col-sm-3">
+								<h:inputText class="form-control"
+									value="#{saticiBean.satici.saticiSoyIsim}"></h:inputText>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<h:outputLabel styleClass="col-sm-2 control-label">Telefon</h:outputLabel>
+							<div class="col-sm-3">
+								<h:inputText class="form-control"
+									value="#{saticiBean.satici.saticiTelefon}"></h:inputText>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<h:outputLabel styleClass="col-sm-2 control-label">E-Mail Adres</h:outputLabel>
+							<div class="col-sm-3">
+								<h:inputText class="form-control"
+									value="#{saticiBean.satici.saticiMail}"></h:inputText>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-4">
+								<h:commandButton value="Güncellemeyi Kaydet"
+									styleClass="btn btn-primary space"
+									actionListener="#{saticiBean.saticiProfilbilgisiGüncelleme}" style="margin-right: 5px;"
+									onclick="alert('Güncelleme Tamamlandı');" />
+
+								<h:commandButton value="İptal Et" styleClass="btn btn-danger"
+									outcome="SaticiGiris.xhtml" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

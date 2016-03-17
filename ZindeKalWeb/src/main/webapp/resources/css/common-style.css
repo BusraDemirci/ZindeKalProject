@@ -1,0 +1,32 @@
+body {
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	overflow-y: scroll;
+	overflow-x: scroll;
+}
+
+body .container {
+	width: 100%;
+	height: 100%;
+}
+
+body .container .row {
+	width: 100%;
+}
+
+body .menu {
+	width: 100%;
+	height: 100%;
+}
+
+.panel-admin-top {
+	margin-top: 121px !important;
+}
+
+.panel-top {
+	margin-top: 37px !important;
+}

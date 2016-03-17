@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://java.sun.com/jsf/passthrough">
+
+
+<h:head>
+	<h:outputScript library="js" name="urunDenetleSayfasi.js" />
+	<h:outputStylesheet library="css" name="urun-style.css" />
+</h:head>
+
+<h:body>
+	<ui:composition template="template/common/saticiCommonLayout.xhtml">
+		<ui:define name="content">
+
+			<h:form styleClass="form-horizontal" role="form">
+				<div class="panel panel-info panel-top">
+					<div class="panel-heading">
+						<h3 class="panel-title">Ürün Sil</h3>
+					</div>
+					<div class="panel-body">
+						<div class="container">
+							<div class="form-group">
+								<div class="form-group">
+									<h:outputLabel styleClass="col-sm-2 control-label">Barkod No</h:outputLabel>
+									<div class="col-sm-3">
+										<h:inputText class="form-control" autocomplete="on"
+											id="barkodText" value="#{urunBean.barkodNo}"></h:inputText>
+									</div>
+									<div class="col-sm-3">
+										<h:commandButton value="Araştır"
+											class="btn btn-success"
+											actionListener="#{urunBean.barkodNoYaDaIsmeGoreUrunAra}">
+											<f:ajax execute="@form" render="@form" />
+										</h:commandButton>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-sm-3">
+										<h:outputText class="text-danger" value="ya da"></h:outputText>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<h:outputLabel styleClass="col-sm-2 control-label">Ürün İsim</h:outputLabel>
+									<div class="col-sm-3">
+										<h:inputText class="form-control" autocomplete="on"
+											id="isimText" value="#{urunBean.urunIsim}"></h:inputText>
+									</div>
+									<div class="col-sm-3">
+										<h:commandButton value="Araştır" class="btn btn-success"
+											actionListener="#{urunBean.barkodNoYaDaIsmeGoreUrunAra}">
+											<f:ajax execute="@form" render="@form" />
+										</h:commandButton>
+									</div>
+								</div>
+
+								<h:panelGroup rendered="#{urunBean.butonaBasildimi==true}">
+									<h:outputText value="Ürün sistemimizde mevcut değildir."
+										class="text-danger" rendered="#{urunBean.urunSayisi==0}" />
+									<div class="col-md-9">
+										<em><h:outputText rendered="#{urunBean.urunSayisi!=0}"
+												value="#{urunBean.urunSayisi}" class="text-danger" /></em>
+										<h:outputText value=" adet urun bulunmaktadır."
+											class="text-danger" rendered="#{urunBean.urunSayisi!=0}" />
+									</div>
+								</h:panelGroup>
+								<br /> <br /> <br />
+								<h:dataTable class="table table-hover" id="selectedUrun"
+									value="#{urunBean.urunOzellikList}" var="urun"
+									rendered="#{urunBean.urunSayisi!=0}">
+									<h:column>
+										<f:facet name="header">
+											<h:outputText value="Seç" />
+										</f:facet>
+										<h:selectBooleanCheckbox value="#{urun.selected}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">
+											<h:outputText value="Barkod No" />
+										</f:facet>
+										<h:outputText value="#{urun.barkodNo}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">
+											<h:outputText value="Urun Isim" />
+										</f:facet>
+										<h:outputText value="#{urun.urunIsim}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">
+											<h:outputText value="Urun Kategori" />
+										</f:facet>
+										<h:outputText value="#{urun.kategori}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">
+											<h:outputText value="Son Kullanma Tarihi" />
+										</f:facet>
+										<h:outputText value="#{urun.skt}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">
+											<h:outputText value="Urun Icerik" />
+										</f:facet>
+										<h:outputText value="#{urun.urunIcerik}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">
+											<h:outputText value="Kurum Adı" />
+										</f:facet>
+										<h:outputText value="#{urun.saticilar[0].kurumAdi}" />
+									</h:column>
+
+								</h:dataTable>
+								<br /> <br />
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-sm-3">
+										<h:commandButton id="silbutton"
+											value="Seçili Ürünü / Ürünleri Sil" class="btn btn-success"
+											action="#{urunBean.urunSil}"
+											onclick="return confirm('Emin misiniz?')"
+											rendered="#{urunBean.urunSayisi!=0}">
+											<f:ajax execute="@form" render="@form" />
+										</h:commandButton>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

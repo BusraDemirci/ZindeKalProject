@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:metadata>
+	<f:event type="preRenderView" listener="#{urunBean.raporlariDenetle}" />
+</f:metadata>
+
+<h:head>
+	<title>Yorum Sikayet Denetleme Sayfasi</title>
+</h:head>
+
+<h:body>
+	<ui:composition template="template/common/saticiCommonLayout.xhtml">
+		<ui:define name="content">
+			<h:form styleClass="form-horizontal" role="form">
+				<div class="panel panel-primary panel-top">
+					<div class="panel-heading">
+						<h3 class="panel-title">Raporlar</h3>
+					</div>
+					<div class="panel-body">
+					
+						<table class="table">
+							<thead>
+								<tr>
+									<th></th>
+									<th>Barkod No</th>
+									<th>Ürün İsmi</th>
+									<th>Kategori</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td style="font-weight: bold">En Çok Tüketilen Ürün</td>
+									<td>#{urunBean.enCokTuketilen.barkodNo}</td>
+									<td>#{urunBean.enCokTuketilen.urunIsim}</td>
+									<td>#{urunBean.enCokTuketilen.kategori}</td>
+								</tr>
+								<tr>
+									<td style="font-weight: bold">En Çok Okutulan Ürün</td>
+									<td>#{urunBean.enCokOkutulan.barkodNo}</td>
+									<td>#{urunBean.enCokOkutulan.urunIsim}</td>
+									<td>#{urunBean.enCokOkutulan.kategori}</td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<table class="table">
+							<thead>
+								<tr>
+									<th></th>
+									<th>Yüzde</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td style="font-weight: bold">Genel Tavsiyeye Uyma Oranı</td>
+									<td>% #{urunBean.tavsiyeyeUymaOranı}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
